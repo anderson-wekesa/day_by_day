@@ -1,0 +1,86 @@
+{% load unicorn %}
+<div>
+    <!-- put component code here -->
+    <h3 style="color:lawngreen;">{{ message }}</h3>
+    <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="post">
+        {% csrf_token %}
+        <div class="form-floating">
+            <input class="form-control" name="name" type="text" placeholder="Enter your name..."  required/>
+            <label for="name">Name</label>
+            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" name="email" type="email" placeholder="Enter your email..."  required/>
+            <label for="email">Email address</label>
+            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" name="phone" type="number" placeholder="Enter your phone number..." required/>
+            <label for="phone">Phone Number</label>
+            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" name="message" placeholder="Enter your message here..." style="height: 12rem" required></textarea>
+            <label for="message">Message</label>
+            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+        </div>
+        <br />
+        <!-- Submit success message-->
+        <!---->
+        <!-- This is what your users will see when the form-->
+        <!-- has successfully submitted-->
+        <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+                <div class="fw-bolder">Form submission successful!</div>
+                To activate this form, sign up at
+                <br />
+                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+            </div>
+        </div>
+        <!-- Submit error message-->
+        <!---->
+        <!-- This is what your users will see when there is-->
+        <!-- an error submitting the form-->
+        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+        <!-- Submit Button-->
+        
+            <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Send</button>
+        <!--</a>-->
+    </form>
+<!--
+    <button unicorn:click="validate_message" class="btn btn-primary text-uppercase" id="submitButton"></button>
+        Send
+    </button> 
+
+    <div>
+        <input unicorn:model="message" type="text" id="text" /><br/>
+        Hello {{ message }}
+        <button unicorn:click="clear_name">Clear Name</button>
+    </div>
+
+
+
+     if request.method=="POST":
+        post=Message()
+        gettData = request.POST
+        post.name = gettData.get ('name')
+        post.email = gettData.get ('email')
+        post.phone = gettData.get ('phone')
+        post.message = gettData.get ('message')
+
+
+
+        if (not post.name):
+            response = "Please Enter your First Name !!"
+        elif not post.email:
+            response = 'First Name must be 3 char long or more'
+        elif not post.phone:
+            response = 'Please Enter your Last Name'
+        elif not post.message:
+            response = 'Last Name must be 3 char long or more'
+
+        post.save()
+
+-->
+</div>
